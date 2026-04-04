@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nupur Thakor | Android Developer</title>
+    <link rel="icon" type="image/x-icon" href="img/NT.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    colors: { 
+                        primary: '#795663', 
+                        secondary: '#011627', 
+                        accent: '#D9BCAF'
+                    }
+                } 
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+        
+        body { font-family: 'Space Grotesk', sans-serif; transition: background-color 0.3s, color 0.3s; scroll-behavior: smooth; }
+        .light { background-color: #f8f9fa; color: #011627; }
+        .dark { background-color: #050505; color: #ffffff; }
+
+        /* --- MAXIMUM NEON INTENSITY FOR DARK MODE --- */
+        .dark .neon-text { 
+            text-shadow: 0 0 10px rgba(121, 86, 99, 0.9), 
+                         0 0 20px rgba(121, 86, 99, 0.7), 
+                         0 0 40px rgba(121, 86, 99, 0.5),
+                         0 0 60px rgba(121, 86, 99, 0.3); 
+            color: #ffffff !important; 
+        }
+
+        /* Highlighting "Nupur Thakor" in the Header */
+        .dark header h2 .text-primary {
+            text-shadow: 0 0 15px rgba(121, 86, 99, 1), 
+                         0 0 30px rgba(121, 86, 99, 0.8), 
+                         0 0 50px rgba(121, 86, 99, 0.6);
+            color: #ffcbdc !important;
+        }
+
+        .dark .neon-card { 
+            background: #0a0a0a; 
+            border-color: #795663; 
+            box-shadow: 0 0 25px rgba(121, 86, 99, 0.6), 
+                        inset 0 0 15px rgba(121, 86, 99, 0.2); 
+        }
+
+        .dark .section-label {
+            text-shadow: 0 0 12px rgba(121, 86, 99, 0.8);
+            color: #cc99aa !important;
+            letter-spacing: 0.5em;
+        }
+
+        .dark p, .dark h4, .dark span:not(.section-label), .dark .tech-tag { color: #ffffff !important; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes rorft-steps { 0%, 30% { transform: translateY(0); } 33%, 63% { transform: translateY(-100%); } 66%, 96% { transform: translateY(-200%); } 100% { transform: translateY(0); } }
+        .rorft-slider { height: 100%; animation: rorft-steps 9s infinite ease-in-out; }
+
+        @keyframes typing-finland { 0%, 15% { content: ""; } 30%, 100% { content: "Dream place: Finland"; } }
+        .type-finland::after { content: ""; animation: typing-finland 8s infinite; }
+        
+        @keyframes panda-jump { 0%, 50% { transform: translateY(0); } 55% { transform: translateY(-35px); } 60% { transform: translateY(0); } }
+        .panda-jump-icon { animation: panda-jump 8s infinite; }
+
+        @keyframes punch-toggle { 0%, 45% { background: #ef4444; border-color: #ef4444; } 55%, 100% { background: #795663; border-color: #795663; } }
+        .punch-btn-anim { animation: punch-toggle 6s infinite; }
+        .punch-btn-anim::after { animation: punch-text 6s infinite; content: "PUNCH IN"; }
+        @keyframes punch-text { 0%, 45% { content: "PUNCH IN"; } 55%, 100% { content: "PUNCH OUT"; } }
+
+        /* --- UI HELPERS --- */
+        .neon-card { border: 2px solid rgba(121, 86, 99, 0.2); border-radius: 24px; transition: all 0.4s ease; overflow: hidden; }
+        .section-label { font-size: 10px; font-weight: 800; letter-spacing: 0.4em; color: #795663; text-transform: uppercase; margin-bottom: 2rem; display: block; }
+        .cyber-phone { width: 230px; height: 460px; border: 8px solid #011627; border-radius: 38px; overflow: hidden; position: relative; background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .dark .cyber-phone { border-color: #795663; box-shadow: 0 0 30px rgba(121, 86, 99, 0.4); }
+    </style>
+</head>
+<body class="light antialiased">
+
+    <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-primary/10">
+        <h1 class="text-xl font-bold tracking-tighter uppercase neon-text">Nupur Thakor</h1>
+        <div class="flex gap-6 text-[9px] font-bold uppercase tracking-widest items-center">
+            <a href="#education" class="hover:text-primary transition">Education</a>
+            <a href="#skills" class="hover:text-primary transition">Skills</a>
+            <a href="#portfolio" class="hover:text-primary transition">Projects</a>
+            <a href="#certificates" class="hover:text-primary transition">Certificates</a>
+            <a href="#contact" class="hover:text-primary transition">Contact</a>
+            <button onclick="document.body.classList.toggle('dark'); document.body.classList.toggle('light')" class="p-2 bg-primary/10 rounded-full">
+                <i class="fas fa-adjust text-primary"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 pt-48 pb-20">
+        
+        <header class="mb-20">
+            <h2 class="text-6xl md:text-8xl font-bold mb-8 tracking-tighter">
+                Hi, I'm <span class="text-primary italic">Nupur Thakor</span>,<br>Android Developer.
+            </h2>
+            <p class="text-xl opacity-70 max-w-3xl leading-relaxed">
+                I develop high-fidelity Android applications using **Kotlin and Java** in Android Studio. For backend development, I utilize **MySQL, PHP, and Firebase**. I also specialize in creating **custom UI animations** and building high-quality websites using **HTML, CSS, and JS** to deliver exceptional results.
+            </p>
+        </header>
+
+        <section id="education" class="mb-40 pt-10">
+            <span class="section-label">Education</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="neon-card p-8">
+                    <p class="text-primary font-bold text-[10px] mb-2">2021 — 2024</p>
+                    <h4 class="font-bold text-lg mb-1 uppercase neon-text">BScIT</h4>
+                    <p class="opacity-50 text-xs">Parul University | 8.16 CGPA</p>
+                </div>
+                <div class="neon-card p-8">
+                    <p class="text-primary font-bold text-[10px] mb-2">2019 — 2021</p>
+                    <h4 class="font-bold text-lg mb-1 uppercase neon-text">HSC (Science Stream)</h4>
+                    <p class="opacity-50 text-xs">Saraswati Vidhyalaya | 78.29%</p>
+                </div>
+                <div class="neon-card p-8">
+                    <p class="text-primary font-bold text-[10px] mb-2">2017 — 2019</p>
+                    <h4 class="font-bold text-lg mb-1 uppercase neon-text">SSC</h4>
+                    <p class="opacity-50 text-xs">Saraswati Vidhyalaya | 72.00%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-40 pt-10">
+            <span class="section-label">Technical Skills</span>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="neon-card p-8">
+                    <h4 class="font-bold text-primary mb-4 text-[10px] uppercase tracking-widest">Programming Languages</h4>
+                    <p class="text-xs opacity-60 leading-loose tech-tag"> Kotlin, Java, PHP, SQL, HTML, CSS, JS. </p>
+                </div>
+                <div class="neon-card p-8">
+                    <h4 class="font-bold text-primary mb-4 text-[10px] uppercase tracking-widest">Android Development</h4>
+                    <p class="text-xs opacity-60 leading-loose tech-tag">Android SDK, Firebase, REST APIs, Volley Library, Mobile App Development</p>
+                </div>
+                <div class="neon-card p-8">
+                    <h4 class="font-bold text-primary mb-4 text-[10px] uppercase tracking-widest">Design</h4>
+                    <p class="text-xs opacity-60 leading-loose tech-tag">Responsive Layouts, Android Material Design, Interactive UI</p>
+                </div>
+                <div class="neon-card p-8">
+                    <h4 class="font-bold text-primary mb-4 text-[10px] uppercase tracking-widest">Tools</h4>
+                    <p class="text-xs opacity-60 leading-loose tech-tag">GitHub, Android Studio, Figma, Canva, MS Office</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="space-y-48 mb-40 pt-10">
+            <span class="section-label">Projects</span>
+
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="cyber-phone">
+                    <div class="rorft-slider">
+                        <div class="h-full bg-white flex flex-col items-center justify-center text-black">
+                            <i class="fas fa-qrcode text-5xl text-primary mb-4"></i>
+                            <p class="font-bold text-[9px] tracking-widest">SCAN TABLE QR</p>
+                        </div>
+                        <div class="h-full bg-white p-8 text-black flex flex-col justify-center">
+                            <div class="h-10 bg-slate-100 border rounded-lg flex items-center px-4 text-[9px] mb-3">Veg Crispy</div>
+                            <div class="h-10 bg-slate-100 border rounded-lg flex items-center px-4 text-[9px]">Dal Tadka</div>
+                        </div>
+                        <div class="h-full bg-primary flex flex-col items-center justify-center text-white">
+                            <i class="fas fa-check-circle text-5xl mb-4"></i>
+                            <p class="font-bold text-[9px]">ORDER PLACED</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-4xl font-bold mb-4 neon-text">RORFT Application</h3>
+                    <p class="opacity-60 leading-relaxed mb-6">A native **Kotlin** app for **QR-Based Food Ordering**, featuring **Real-Time Menu Displays** and kitchen order submission. Integrated **Firebase** for **Live Order Tracking** and secure data management to enhance the contactless dining experience.</p>
+                    <a href="https://rorft-advertisement.vercel.app/" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="flex-1 text-right order-2 md:order-1">
+                    <h3 class="text-4xl font-bold mb-4 neon-text">Panda Notes Application</h3>
+                    <p class="opacity-60 leading-relaxed mb-6">A **Java-based** Android app using **Firebase** for secure, real-time cloud note-taking with full CRUD functionality.Optimized user experience with **RecyclerView** and a custom **Panda-themed UI** following Material Design principles.</p>
+                    <a href="https://github.com/nupurthakor/PANDA-NOTES-APP-CLOUD-BASED-" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition"><i class="fas fa-arrow-left mr-2"></i> View Project</a>
+                </div>
+                <div class="cyber-phone order-1 md:order-2">
+                    <div class="h-full bg-white p-6 flex flex-col text-black">
+                        <div class="text-center mt-10">
+                            <span class="text-6xl inline-block panda-jump-icon">🐼</span>
+                        </div>
+                        <div class="mt-8 p-4 border-2 border-dashed border-primary/20 rounded-2xl min-h-[100px] bg-slate-50">
+                            <p class="type-finland text-[10px] font-bold text-primary"></p>
+                        </div>
+                        <div class="mt-4 bg-primary text-white py-3 rounded-xl text-[9px] font-bold text-center">SAVE NOTE</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="cyber-phone">
+                    <div class="h-full bg-slate-50 flex flex-col text-black p-5">
+                        <div class="bg-secondary text-white p-3 rounded-2xl mb-6 flex items-center gap-2 shadow-lg">
+                            <i class="fas fa-clock text-[8px] text-accent"></i>
+                            <p class="text-[7px]">Shift starts @ 09:00 AM</p>
+                        </div>
+                        <h4 class="font-bold text-sm mb-6">Nupur Thakor</h4>
+                        <div class="punch-btn-anim w-20 h-20 rounded-3xl mx-auto mb-8 flex flex-col items-center justify-center border-4 shadow-xl text-white">
+                            <i class="fas fa-fingerprint text-3xl mb-1"></i>
+                            <span class="text-[6px] font-black"></span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white p-4 rounded-2xl border border-primary/10 text-center shadow-sm">
+                                <i class="fas fa-calendar-alt text-primary text-sm mb-1"></i>
+                                <p class="text-[6px] font-bold uppercase">Leave Request</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl border border-primary/10 text-center shadow-sm">
+                                <i class="fas fa-money-bill-wave text-primary text-sm mb-1"></i>
+                                <p class="text-[6px] font-bold uppercase">Salary Details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-4xl font-bold mb-4 neon-text">WorkFlowPro</h3>
+                    <p class="opacity-60 leading-relaxed mb-6">A full-stack ecosystem featuring a **PHP 8.2/MySQL** web portal for Admin, HR, and Managers, along with a native **Kotlin** employee app. Built **REST APIs** to ensure real-time data synchronization for attendance and payroll management.</p>
+                    <a href="https://workflowpro-web-seven.vercel.app/" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition">View Project <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="mb-40 pt-10">
+            <span class="section-label">Certifications</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="neon-card p-4 text-center">
+                    <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="img/c1.jpeg" alt="Sololearn" class="max-h-full">
+                    </div>
+                    <p class="text-[9px] font-bold uppercase">Sololearn</p>
+                </div>
+                <div class="neon-card p-4 text-center">
+                    <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="img/c2.jpeg" alt="IIT Bombay" class="max-h-full">
+                    </div>
+                    <p class="text-[9px] font-bold uppercase">IIT Bombay</p>
+                </div>
+                <div class="neon-card p-4 text-center">
+                    <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="img/c3.jpeg" alt="Tech" class="max-h-full">
+                    </div>
+                    <p class="text-[9px] font-bold uppercase">Tech Certification</p>
+                </div>
+                <div class="neon-card p-4 text-center">
+                    <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
+                        <img src="img/c4.jpeg" alt="Great Learning" class="max-h-full">
+                    </div>
+                    <p class="text-[9px] font-bold uppercase">Great Learning</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="neon-card p-16 text-center border-primary/40">
+            <h2 class="text-3xl font-bold mb-8 uppercase tracking-tighter neon-text">Get In Touch</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-10 text-xs font-bold opacity-70 mb-12">
+                <p><i class="fas fa-envelope mr-2 text-primary"></i> nups826@gmail.com</p>
+                <p><i class="fas fa-phone mr-2 text-primary"></i> +91 8460507447</p>
+            </div>
+            
+            <div class="flex justify-center gap-8 mb-12">
+                <a href="https://github.com/nupurthakor" target="_blank" class="text-2xl hover:text-primary transition-all hover:scale-125"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/nupur-thakor-1147733b0" target="_blank" class="text-2xl hover:text-primary transition-all hover:scale-125"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            <a href="mailto:nups826@gmail.com" class="bg-primary text-white px-12 py-5 rounded-full font-bold uppercase text-[10px] tracking-widest hover:scale-105 transition-all shadow-xl">Contact Me</a>
+        </section>
+
+        <footer class="mt-32 text-center opacity-30 text-[8px] uppercase tracking-[0.4em]">
+            © 2026 Nupur Thakor | Android Developer
+        </footer>
+    </main>
+</body>
+</html>
