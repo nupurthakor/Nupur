@@ -24,7 +24,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
         
-        body { font-family: 'Space Grotesk', sans-serif; transition: background-color 0.3s, color 0.3s; scroll-behavior: smooth; }
+        body { font-family: 'Space Grotesk', sans-serif; transition: background-color 0.3s, color 0.3s; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
         .light { background-color: #f8f9fa; color: #011627; }
         .dark { background-color: #050505; color: #ffffff; }
 
@@ -80,13 +80,27 @@
         .section-label { font-size: 10px; font-weight: 800; letter-spacing: 0.4em; color: #795663; text-transform: uppercase; margin-bottom: 2rem; display: block; }
         .cyber-phone { width: 230px; height: 460px; border: 8px solid #011627; border-radius: 38px; overflow: hidden; position: relative; background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .dark .cyber-phone { border-color: #795663; box-shadow: 0 0 30px rgba(121, 86, 99, 0.4); }
+
+        /* --- ADDED FOR MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            .cyber-phone {
+                width: 100% !important;
+                max-width: 240px;
+                height: auto !important;
+                aspect-ratio: 1 / 2;
+            }
+            header h2 {
+                font-size: 2.75rem !important;
+                line-height: 1.1 !important;
+            }
+        }
     </style>
 </head>
 <body class="light antialiased">
 
     <nav class="fixed top-0 w-full z-50 px-10 py-6 flex justify-between items-center bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-primary/10">
         <h1 class="text-xl font-bold tracking-tighter uppercase neon-text">Nupur Thakor</h1>
-        <div class="flex gap-6 text-[9px] font-bold uppercase tracking-widest items-center">
+        <div class="flex flex-wrap md:flex-nowrap justify-center gap-3 md:gap-6 text-[8px] md:text-[9px] font-bold uppercase tracking-widest items-center">
             <a href="#education" class="hover:text-primary transition">Education</a>
             <a href="#skills" class="hover:text-primary transition">Skills</a>
             <a href="#portfolio" class="hover:text-primary transition">Projects</a>
@@ -122,7 +136,7 @@
                     <h4 class="font-bold text-lg mb-1 uppercase neon-text">HSC (Science Stream)</h4>
                     <p class="opacity-50 text-xs">Saraswati Vidhyalaya | 78.29%</p>
                 </div>
-                <div class="neon-card p-8">
+                <div class="neon-card p-4 md:p-8">
                     <p class="text-primary font-bold text-[10px] mb-2">2017 — 2019</p>
                     <h4 class="font-bold text-lg mb-1 uppercase neon-text">SSC</h4>
                     <p class="opacity-50 text-xs">Saraswati Vidhyalaya | 72.00%</p>
@@ -155,8 +169,8 @@
         <section id="portfolio" class="space-y-48 mb-40 pt-10">
             <span class="section-label">Projects</span>
 
-            <div class="flex flex-col md:flex-row items-center gap-20">
-                <div class="cyber-phone">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+                <div class="cyber-phone mx-auto md:mx-0">
                     <div class="rorft-slider">
                         <div class="h-full bg-white flex flex-col items-center justify-center text-black">
                             <i class="fas fa-qrcode text-5xl text-primary mb-4"></i>
@@ -172,20 +186,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-1">
+                <div class="flex-1 text-center md:text-left">
                     <h3 class="text-4xl font-bold mb-4 neon-text">RORFT Application</h3>
                     <p class="opacity-60 leading-relaxed mb-6">A native **Kotlin** app for **QR-Based Food Ordering**, featuring **Real-Time Menu Displays** and kitchen order submission. Integrated **Firebase** for **Live Order Tracking** and secure data management to enhance the contactless dining experience.</p>
                     <a href="https://rorft-advertisement.vercel.app/" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition">View Project <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-20">
-                <div class="flex-1 text-right order-2 md:order-1">
-                    <h3 class="text-4xl font-bold mb-4 neon-text">Panda Notes Application</h3>
-                    <p class="opacity-60 leading-relaxed mb-6">A **Java-based** Android app using **Firebase** for secure, real-time cloud note-taking with full CRUD functionality.Optimized user experience with **RecyclerView** and a custom **Panda-themed UI** following Material Design principles.</p>
-                    <a href="https://github.com/nupurthakor/PANDA-NOTES-APP-CLOUD-BASED-" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition"><i class="fas fa-arrow-left mr-2"></i> View Project</a>
-                </div>
-                <div class="cyber-phone order-1 md:order-2">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+                <div class="cyber-phone order-1 md:order-2 mx-auto md:mx-0">
                     <div class="h-full bg-white p-6 flex flex-col text-black">
                         <div class="text-center mt-10">
                             <span class="text-6xl inline-block panda-jump-icon">🐼</span>
@@ -196,10 +205,15 @@
                         <div class="mt-4 bg-primary text-white py-3 rounded-xl text-[9px] font-bold text-center">SAVE NOTE</div>
                     </div>
                 </div>
+                <div class="flex-1 text-center md:text-right order-2 md:order-1">
+                    <h3 class="text-4xl font-bold mb-4 neon-text">Panda Notes Application</h3>
+                    <p class="opacity-60 leading-relaxed mb-6">A **Java-based** Android app using **Firebase** for secure, real-time cloud note-taking with full CRUD functionality.Optimized user experience with **RecyclerView** and a custom **Panda-themed UI** following Material Design principles.</p>
+                    <a href="https://github.com/nupurthakor/PANDA-NOTES-APP-CLOUD-BASED-" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition"><i class="fas fa-arrow-left mr-2"></i> View Project</a>
+                </div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-20">
-                <div class="cyber-phone">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+                <div class="cyber-phone mx-auto md:mx-0">
                     <div class="h-full bg-slate-50 flex flex-col text-black p-5">
                         <div class="bg-secondary text-white p-3 rounded-2xl mb-6 flex items-center gap-2 shadow-lg">
                             <i class="fas fa-clock text-[8px] text-accent"></i>
@@ -222,7 +236,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-1">
+                <div class="flex-1 text-center md:text-left">
                     <h3 class="text-4xl font-bold mb-4 neon-text">WorkFlowPro</h3>
                     <p class="opacity-60 leading-relaxed mb-6">A full-stack ecosystem featuring a **PHP 8.2/MySQL** web portal for Admin, HR, and Managers, along with a native **Kotlin** employee app. Built **REST APIs** to ensure real-time data synchronization for attendance and payroll management.</p>
                     <a href="https://workflowpro-web-seven.vercel.app/" class="text-[10px] font-bold uppercase tracking-widest border-b-2 border-primary pb-1 hover:text-primary transition">View Project <i class="fas fa-arrow-right ml-2"></i></a>
@@ -232,68 +246,68 @@
 
         <section id="certificates" class="mb-40 pt-10">
             <span class="section-label">Certifications</span>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c1.jpg" alt="Sololearn" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">Sololearn</p>
-					<p class="text-[9px] font-bold uppercase">December 2021</p>
+                    <p class="text-[9px] font-bold uppercase">December 2021</p>
                 </div>
                 <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c2.jpg" alt="IIT Bombay" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">IIT Bombay</p>
-					<p class="text-[9px] font-bold uppercase">February 2023</p>
+                    <p class="text-[9px] font-bold uppercase">February 2023</p>
                 </div>
                 <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c3.jpg" alt="Internship" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">Internship Certification</p>
-					<p class="text-[9px] font-bold uppercase">February 2024</p>
+                    <p class="text-[9px] font-bold uppercase">February 2024</p>
                 </div>
                 <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c4.jpg" alt="Great Learning" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">Great Learning</p>
-					<p class="text-[9px] font-bold uppercase">April 2024</p>
+                    <p class="text-[9px] font-bold uppercase">April 2024</p>
                 </div>
-				
-				<div class="neon-card p-4 text-center">
+                
+                <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c5.jpg" alt="CodeSignal" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">CodeSignal</p>
-                    <p class="text-[9px] font-bold uppercase">April 2026</p>	
+                    <p class="text-[9px] font-bold uppercase">April 2026</p> 
                 </div>
-				
-				<div class="neon-card p-4 text-center">
+                
+                <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c6.jpg" alt="CodeSignal" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">CodeSignal</p>
-                    <p class="text-[9px] font-bold uppercase">May 2026</p>	
+                    <p class="text-[9px] font-bold uppercase">May 2026</p> 
                 </div>
 
-				<div class="neon-card p-4 text-center">
+                <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c7.png" alt="CodeSignal" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">CodeSignal</p>
-                    <p class="text-[9px] font-bold uppercase">8 May 2026</p>	
+                    <p class="text-[9px] font-bold uppercase">8 May 2026</p> 
                 </div>
 
-				<div class="neon-card p-4 text-center">
+                <div class="neon-card p-4 text-center">
                     <div class="bg-gray-200 dark:bg-zinc-900 h-32 rounded-xl mb-3 flex items-center justify-center overflow-hidden">
                         <img src="img/c8.png" alt="CodeSignal" class="max-h-full">
                     </div>
                     <p class="text-[9px] font-bold uppercase">CodeSignal</p>
-                    <p class="text-[9px] font-bold uppercase">15 May 2026</p>	
+                    <p class="text-[9px] font-bold uppercase">15 May 2026</p> 
                 </div>
-				
+                
             </div>
         </section>
 
